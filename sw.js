@@ -1,12 +1,12 @@
 const CACHE_NAME = "sonar-cone-cache-v1";
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/styles.css",
-  "/app.js",
-  "/manifest.json",
-  "/icons/icon-192.png",
-  "/icons/icon-512.png"
+  "/sonar-cone/",
+  "/sonar-cone/index.html",
+  "/sonar-cone/styles.css",
+  "/sonar-cone/app.js",
+  "/sonar-cone/manifest.json",
+  "/sonar-cone/icons/icon-192.png",
+  "/sonar-cone/icons/icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
