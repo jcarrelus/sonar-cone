@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonar Cone Radius</title>
+    <!-- Changed by: Jack Carrel, 02-May-2026 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007aff">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+<div class="app">
+    <header class="app-header">
+        <h1>Sonar Cone Radius</h1>
+        <button id="infoButton" class="icon-button" aria-label="Info">
+            ?
+        </button>
+    </header>
+
+    <section class="card">
+        <h2 class="section-title">Cone Angle Preset</h2>
+        <div class="preset-group">
+            <label class="preset-option">
+                <input type="radio" name="anglePreset" value="15" checked>
+                <span>15&deg High CHIRP</span>
+            </label>
+            <label class="preset-option">
+                <input type="radio" name="anglePreset" value="45">
+                <span>45&deg Mid CHIRP</span>
+            </label>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">Depths</h2>
+
+        <div class="slider-group">
+            <label for="bottomDepth">Bottom Depth:</label>
+            <div class="depth-input-row">
+                <input type="range" id="bottomDepth" min="1" max="200" value="30">
+                <input type="number" id="bottomDepthNumber" min="1" max="200" value="30">
+                <span>ft</span>
+            </div>
+        </div>
+
+        <div class="slider-group">
+            <label for="fishDepth">Fish Depth:</label>
+            <div class="depth-input-row">
+                <input type="range" id="fishDepth" min="1" max="200" value="12">
+                <input type="number" id="fishDepthNumber" min="1" max="200" value="12">
+                <span>ft</span>
+            </div>
+        </div>
+
+        <div class="toggle-group">
+          <label for="diagramMode">Diagram Style:</label>
+          <select id="diagramMode">
+            <option value="simple">Simple</option>
+            <option value="enhanced" selected>Enhanced</option>
+          </select>
+        </div>
+
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">Radii</h2>
+
+        <div class="output-row">
+            <div class="output-label">Bottom Radius</div>
+            <div class="output-value" id="bottomRadiusValue">0.00 ft</div>
+        </div>
+
+        <div class="output-row">
+            <div class="output-label">Fish Radius</div>
+            <div class="output-value" id="fishRadiusValue">0.00 ft</div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">Cone Diagram</h2>
+        <canvas id="coneCanvas" width="400" height="240"></canvas>
+    </section>
+</div>
+
+<!-- Info overlay -->
+<div id="infoOverlay" class="overlay hidden">
+    <div class="overlay-content">
+        <div class="overlay-header">
+            <h2>Sonar Cone Info</h2>
+            <button id="closeInfoButton" class="icon-button" aria-label="Close">
+                ?
+            </button>
+        </div>
+        <div class="overlay-body">
+            <h3>Sonar Cone Geometry</h3>
+            <p>
+                Traditional 2D sonar sends a pulse that fills a cone-shaped volume of water.
+                Anything inside that cone can reflect energy back to the transducer.
+            </p>
+            <p>
+                The sonar measures time delay (depth) and signal strength (intensity),
+                but it does <strong>not</strong> measure the angle of the return.
+                That means it cannot determine the fish’s exact horizontal position.
+            </p>
+
+            <h3>Radius at Fish Depth</h3>
+            <p>
+                The radius at a given depth is the maximum possible horizontal distance
+                between the fish and the centerline of the boat at that depth.
+            </p>
+            <p>
+                It is calculated as:
+            </p>
+            <p class="formula">
+                R = depth × tan(angle / 2)
+            </p>
+            <p>
+                This radius defines a circle. The fish must be somewhere inside that circle,
+                but its exact position within the circle is unknown.
+            </p>
+
+            <h3>Horizontal Offset</h3>
+            <p>
+                Horizontal offset is the actual left/right distance of the fish from the boat.
+                Traditional sonar cannot calculate this because it does not know the angle
+                of the return. Only advanced phased-array systems (like LiveScope-style
+                sonars) can estimate horizontal offset.
+            </p>
+
+            <h3>Why This App Helps</h3>
+            <p>
+                This tool shows the radius at the fish depth and at the bottom. These values
+                help you interpret how far off-center a fish could be, even though the exact
+                offset is unknown.
+            </p>
+
+            <p class="about">
+                Cone Radius Calculator (Web Version)<br>
+                Designed to help anglers interpret sonar cone coverage.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="app.js?v=999"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .catch((err) => {
+        console.log("Service worker registration failed:", err);
+      });
+  });
+}
+</script>
+</body>
+</html>
