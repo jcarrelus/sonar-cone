@@ -104,7 +104,7 @@
             <p>
                 The sonar measures time delay (depth) and signal strength (intensity),
                 but it does <strong>not</strong> measure the angle of the return.
-                That means it cannot determine the fish’s exact horizontal position.
+                That means it cannot determine the fishâ€™s exact horizontal position.
             </p>
 
             <h3>Radius at Fish Depth</h3>
@@ -116,7 +116,7 @@
                 It is calculated as:
             </p>
             <p class="formula">
-                R = depth × tan(angle / 2)
+                R = depth Ã— tan(angle / 2)
             </p>
             <p>
                 This radius defines a circle. The fish must be somewhere inside that circle,
@@ -150,7 +150,7 @@
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js")
+    navigator.serviceWorker.register("/sonar-cone/sw.js")
       .catch((err) => {
         console.log("Service worker registration failed:", err);
       });
