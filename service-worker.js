@@ -1,6 +1,5 @@
 const CACHE_NAME = "sonar-cone-cache-v1";
 const ASSETS = [
-  "/sonar-cone/",
   "/sonar-cone/index.html",
   "/sonar-cone/styles.css",
   "/sonar-cone/app.js",
