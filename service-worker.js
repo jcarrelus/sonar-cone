@@ -32,7 +32,7 @@ self.addEventListener("fetch", (event) => {
       return (
         cached ||
         fetch(event.request).catch(() =>
-          caches.match("/index.html")
+          caches.match("/sonar-cone/index.html")
         )
       );
     })
