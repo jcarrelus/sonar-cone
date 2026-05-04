@@ -7,6 +7,24 @@ const state = {
   bottomDepth: 30,
   fishDepth: 12,
 };
+const canvas = document.getElementById('coneCanvas');
+const ctx = canvas.getContext('2d');
+const appContainer = document.getElementById('appContainer');
+
+function resizeCanvas() {
+    // Canvas fills remaining vertical space
+    canvas.width = appContainer.clientWidth;
+    canvas.height = appContainer.clientHeight - document.getElementById('controls').clientHeight;
+
+    updateCone(); // redraw with new size
+}
+
+window.addEventListener('resize', resizeCanvas);
+window.addEventListener('orientationchange', resizeCanvas);
+
+// Call once on load
+resizeCanvas();
+
 
 let coneAngle = state.anglePreset; // kept in sync with preset
 
