@@ -363,7 +363,7 @@ function resizeCanvas() {
     canvas.width = appContainer.clientWidth;
     canvas.height = appContainer.clientHeight - controls.clientHeight;
 
-    updateUI(); // now safe because updateCone is defined above
+    updateUI(); // now safe because updateUI is defined above
 }
 
 window.addEventListener('resize', resizeCanvas);
