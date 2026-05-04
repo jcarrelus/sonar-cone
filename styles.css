@@ -236,3 +236,61 @@ input[type="range"] {
         padding: 14px;
     }
 }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    background: #f0f0f0;
+    font-family: system-ui, sans-serif;
+}
+
+/* Safe-area aware container */
+#appContainer {
+    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+/* Controls section */
+#controls {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.row label {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.row input {
+    flex: 1;
+    padding: 4px;
+    font-size: 14px;
+}
+
+.row button {
+    margin-left: 6px;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+/* Canvas fills remaining space */
+#coneCanvas {
+    flex: 1 1 auto;
+    width: 100%;
+    background: white;
+    display: block;
+}
+
