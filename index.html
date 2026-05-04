@@ -17,36 +17,74 @@
 </head>
 
 <body>
-    <div id="appContainer">
+  <div id="appContainer">
 
-        <div id="controls">
-            <div class="row">
-                <button id="angle15">15°</button>
-                <button id="angle45">45°</button>
-            </div>
+    <!-- === CONTROLS === -->
+    <div id="controls">
 
-            <div class="row">
-                <label for="customAngle">Custom Angle:</label>
-                <input type="number" id="customAngle" min="1" max="90" step="0.1" placeholder="°">
-                <button id="applyCustomAngle">Apply</button>
-            </div>
+      <!-- Angle Presets -->
+      <div class="row">
+        <label>Angle:</label>
+        <label><input type="radio" name="anglePreset" value="15" checked> 15°</label>
+        <label><input type="radio" name="anglePreset" value="45"> 45°</label>
+      </div>
 
-            <div class="row">
-                <label for="bottomDepth">Bottom Depth (ft):</label>
-                <input type="number" id="bottomDepth" min="1" max="300" step="1">
-            </div>
+      <!-- Bottom Depth -->
+      <div class="row">
+        <label for="bottomDepth">Bottom:</label>
+        <input type="range" id="bottomDepth" min="1" max="300" value="30">
+        <input type="number" id="bottomDepthNumber" min="1" max="300" value="30">
+      </div>
 
-            <div class="row">
-                <label for="fishDepth">Fish Depth (ft):</label>
-                <input type="number" id="fishDepth" min="1" max="300" step="1">
-            </div>
-        </div>
+      <!-- Fish Depth -->
+      <div class="row">
+        <label for="fishDepth">Fish:</label>
+        <input type="range" id="fishDepth" min="1" max="300" value="12">
+        <input type="number" id="fishDepthNumber" min="1" max="300" value="12">
+      </div>
 
-        <canvas id="coneCanvas"></canvas>
+      <!-- Diagram Mode -->
+      <div class="row">
+        <label for="diagramMode">Mode:</label>
+        <select id="diagramMode">
+          <option value="simple">Simple</option>
+          <option value="enhanced" selected>Enhanced</option>
+        </select>
+      </div>
+
+      <!-- Radius Readouts -->
+      <div class="row">
+        <label>Bottom Radius:</label>
+        <span id="bottomRadiusValue">0 ft</span>
+      </div>
+
+      <div class="row">
+        <label>Fish Radius:</label>
+        <span id="fishRadiusValue">0 ft</span>
+      </div>
+
+      <!-- Info Button -->
+      <div class="row">
+        <button id="infoButton">Info</button>
+      </div>
 
     </div>
 
-    <script src="app.js?v=999"></script>
+    <!-- === CANVAS === -->
+    <canvas id="coneCanvas"></canvas>
+
+  </div>
+
+  <!-- === INFO OVERLAY === -->
+  <div id="infoOverlay" class="hidden">
+    <div id="infoBox">
+      <h2>About This App</h2>
+      <p>This sonar cone visualizer shows cone width, fish radius, and depth relationships.</p>
+      <button id="closeInfoButton">Close</button>
+    </div>
+  </div>
+
+  <script src="app.js?v=999"></script>
 </body>
 
 </html>
