@@ -19,55 +19,80 @@
 <body>
   <div id="appContainer">
 
-    <div id="controls">
+<div id="controls">
 
-      <!-- Angle Presets -->
-      <div class="row">
-        <label>Angle:</label>
-        <label><input type="radio" name="anglePreset" value="15" checked> 15°</label>
-        <label><input type="radio" name="anglePreset" value="45"> 45°</label>
-      </div>
+  <!-- Garmin Angle Presets -->
+  <div class="card angle-card">
+    <h3 class="section-title">Sonar Cone Angle</h3>
 
-      <!-- Bottom Depth -->
-      <div class="row">
-        <label for="bottomDepth">Bottom:</label>
-        <input type="range" id="bottomDepth" min="1" max="300" value="30">
-        <input type="number" id="bottomDepthNumber" min="1" max="300" value="30">
-      </div>
+    <div class="preset-group">
 
-      <!-- Fish Depth -->
-      <div class="row">
-        <label for="fishDepth">Fish:</label>
-        <input type="range" id="fishDepth" min="1" max="300" value="12">
-        <input type="number" id="fishDepthNumber" min="1" max="300" value="12">
-      </div>
+      <label class="preset-option garmin-wide">
+        <input type="radio" name="anglePreset" value="45">
+        <div class="preset-title">Wide</div>
+        <div class="preset-sub">77 kHz · 45°</div>
+      </label>
 
-      <!-- Diagram Mode -->
-      <div class="row">
-        <label for="diagramMode">Mode:</label>
-        <select id="diagramMode">
-          <option value="simple">Simple</option>
-          <option value="enhanced" selected>Enhanced</option>
-        </select>
-      </div>
-
-      <!-- Radius Readouts -->
-      <div class="row">
-        <label>Bottom Radius:</label>
-        <span id="bottomRadiusValue">0 ft</span>
-      </div>
-
-      <div class="row">
-        <label>Fish Radius:</label>
-        <span id="fishRadiusValue">0 ft</span>
-      </div>
-
-      <!-- Info Button -->
-      <div class="row">
-        <button id="infoButton">Info</button>
-      </div>
+      <label class="preset-option garmin-narrow">
+        <input type="radio" name="anglePreset" value="15" checked>
+        <div class="preset-title">Narrow</div>
+        <div class="preset-sub">200 kHz · 15°</div>
+      </label>
 
     </div>
+  </div>
+
+  <!-- Bottom Depth -->
+  <div class="card">
+    <h3 class="section-title">Bottom Depth</h3>
+    <div class="depth-input-row">
+      <input type="range" id="bottomDepth" min="1" max="300" value="30">
+      <input type="number" id="bottomDepthNumber" min="1" max="300" value="30">
+    </div>
+  </div>
+
+  <!-- Fish Depth -->
+  <div class="card">
+    <h3 class="section-title">Fish Depth</h3>
+    <div class="depth-input-row">
+      <input type="range" id="fishDepth" min="1" max="300" value="12">
+      <input type="number" id="fishDepthNumber" min="1" max="300" value="12">
+    </div>
+  </div>
+
+  <!-- Diagram Mode -->
+  <div class="card">
+    <h3 class="section-title">Diagram Mode</h3>
+    <div class="toggle-group">
+      <select id="diagramMode">
+        <option value="simple">Simple</option>
+        <option value="enhanced" selected>Enhanced</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Radius Outputs -->
+  <div class="card radius-card">
+    <h3 class="section-title">Radius Output</h3>
+
+    <div class="output-row garmin-output">
+      <span class="output-label">Bottom Radius</span>
+      <span class="output-value" id="bottomRadiusValue">0 ft</span>
+    </div>
+
+    <div class="output-row garmin-output">
+      <span class="output-label">Fish Radius</span>
+      <span class="output-value" id="fishRadiusValue">0 ft</span>
+    </div>
+  </div>
+
+  <!-- Info Button -->
+  <div class="card">
+    <button id="infoButton" class="icon-button">Info</button>
+  </div>
+
+</div>
+
 
     <canvas id="coneCanvas"></canvas>
 
