@@ -205,13 +205,15 @@ html, body {
 
 .radius-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* important: aligns top of right column */
     justify-content: space-between;
+    gap: 12px; /* prevents crowding */
 }
 
 .radius-label {
     font-size: 1.05rem;
     font-weight: 600;
+    white-space: nowrap; /* keeps label on one line */
 }
 
 .radius-values {
@@ -219,12 +221,14 @@ html, body {
     flex-direction: column;
     gap: 4px;
     text-align: right;
+    flex-shrink: 0; /* prevents wrapping under the label */
 }
 
 .radius-item {
     display: flex;
     gap: 6px;
     justify-content: flex-end;
+    white-space: nowrap; /* prevents wrapping of Bottom/Fish rows */
 }
 
 .radius-name {
@@ -238,6 +242,7 @@ html, body {
     color: var(--accent);
     font-variant-numeric: tabular-nums;
 }
+
 
 /* Canvas */
 #coneCanvas {
