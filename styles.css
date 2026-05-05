@@ -176,38 +176,24 @@ html, body {
 }
 
 /* Radius Outputs */
-
-/* Compact Garmin Radius Block */
+/* Ultra-compact radius layout */
 .compact-radius {
-    padding: 14px 16px;
+    padding: 10px 14px;
 }
 
 .radius-row {
     display: flex;
-    align-items: flex-start; /* important: aligns top of right column */
     justify-content: space-between;
-    gap: 12px; /* prevents crowding */
-}
-
-.radius-label {
-    font-size: 1.05rem;
-    font-weight: 600;
-    white-space: nowrap; /* keeps label on one line */
-}
-
-.radius-values {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-align: right;
-    flex-shrink: 0; /* prevents wrapping under the label */
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
 }
 
 .radius-item {
     display: flex;
+    align-items: center;
     gap: 6px;
-    justify-content: flex-end;
-    white-space: nowrap; /* prevents wrapping of Bottom/Fish rows */
+    white-space: nowrap;
 }
 
 .radius-name {
@@ -221,6 +207,7 @@ html, body {
     color: var(--accent);
     font-variant-numeric: tabular-nums;
 }
+
 
 /* Canvas */
 #coneCanvas {
