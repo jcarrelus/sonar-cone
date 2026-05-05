@@ -15,143 +15,38 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
-    font-family: var(--font);
+    height: 100%;
+    overflow: hidden;
     background: var(--bg);
+    font-family: var(--font);
     color: var(--text);
 }
 
-.app {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 16px;
-}
-
-.app-header {
+/* Safe-area container */
+#appContainer {
+    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.app-header h1 {
-    font-size: 1.4rem;
-    margin: 0;
-}
-
-.icon-button {
-    border: none;
-    background: transparent;
-    font-size: 1.4rem;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-
-.card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 16px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-}
-
-.section-title {
-    font-size: 1rem;
-    margin: 0 0 12px 0;
-}
-
-.preset-group {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.preset-option {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.preset-option input {
-    accent-color: var(--accent);
-}
-
-.slider-group {
-    margin-bottom: 12px;
-}
-
-.slider-group label {
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
-}
-
-.toggle-group {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.toggle-group select {
-    padding: 6px;
-    font-size: 1rem;
-    border-radius: 6px;
-}
-
-input[type="range"] {
-    width: 100%;
-}
-
-.depth-input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.depth-input-row input[type="number"] {
-    width: 70px;
-    padding: 6px;
-    font-size: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-}
-
-.output-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 12px;
-    border-radius: 10px;
-    background: #f2f2f7;
-    margin-bottom: 8px;
-}
-
-.output-label {
-    font-size: 0.95rem;
-}
-
-.output-value {
-    font-size: 1.1rem;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-}
-
+/* Header */
 .app-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 6px 12px;
     margin-bottom: 6px;
+}
+
+.app-header h1 {
+    font-size: 1.3rem;
+    margin: 0;
 }
 
 .icon-button {
@@ -162,136 +57,21 @@ input[type="range"] {
     padding: 4px;
 }
 
-/* Canvas */
-#coneCanvas {
-    width: 100%;
-    border-radius: 10px;
-    background: #f9f9fb;
-    border: 1px solid var(--border);
-}
-
-/* Info overlay */
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.overlay.hidden {
-    display: none;
-}
-
-.overlay-content {
-    max-width: 520px;
-    width: 90%;
-    max-height: 90vh;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-}
-
-.overlay-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-}
-
-.overlay-header h2 {
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-.overlay-body {
-    padding: 12px 16px 16px;
-    overflow-y: auto;
-}
-
-.overlay-body h3 {
-    margin-top: 12px;
-    margin-bottom: 6px;
-    font-size: 1rem;
-}
-
-.overlay-body p {
-    margin-top: 4px;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: var(--subtext);
-}
-
-.formula {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    background: #f2f2f7;
-    padding: 6px 8px;
-    border-radius: 6px;
-}
-
-.about {
-    margin-top: 16px;
-    font-size: 0.8rem;
-    color: var(--subtext);
-    border-top: 1px solid var(--border);
-    padding-top: 8px;
-}
-
-/* Mobile tweaks */
-@media (max-width: 480px) {
-    .app {
-        padding: 12px;
-    }
-
-    .card {
-        padding: 14px;
-    }
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling */
-    background: #f0f0f0;
-    font-family: system-ui, sans-serif;
-}
-
-/* Safe-area aware container */
-#appContainer {
-    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-}
-
-/* ============================================================
-   GARMIN STYLE UPGRADE — FULL INSTRUMENT PANEL LOOK
-   ============================================================ */
-
-/* Expand controls container */
+/* Controls container */
 #controls {
-    padding: 16px 18px;
-    background: var(--bg);
+    flex: 0 0 auto;
+    padding: 12px 16px;
     overflow-y: auto;
 }
 
-/* --- CARD ENHANCEMENTS --- */
+/* Card */
 .card {
-    padding: 20px 22px;
-    margin-bottom: 18px;
-    border-radius: var(--radius);
     background: var(--card-bg);
-    border: 1px solid var(--border);
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
 }
 
 .section-title {
@@ -300,7 +80,7 @@ html, body {
     margin-bottom: 14px;
 }
 
-/* --- GARMIN ANGLE PRESETS --- */
+/* Garmin Angle Presets */
 .angle-card .preset-group {
     display: flex;
     gap: 12px;
@@ -316,7 +96,6 @@ html, body {
     cursor: pointer;
     background: #f7f9fc;
     transition: 0.15s ease;
-    position: relative;
 }
 
 .preset-option input {
@@ -334,13 +113,7 @@ html, body {
     margin-top: 2px;
 }
 
-/* --- SELECTED STATE --- */
-.preset-option input:checked ~ .preset-title,
-.preset-option input:checked ~ .preset-sub {
-    color: white;
-}
-
-/* Wide (77 kHz · 45°) */
+/* Selected states */
 .garmin-wide {
     border-color: #ff9500;
 }
@@ -350,7 +123,6 @@ html, body {
     color: white;
 }
 
-/* Narrow (200 kHz · 15°) */
 .garmin-narrow {
     border-color: #007aff;
 }
@@ -360,7 +132,7 @@ html, body {
     color: white;
 }
 
-/* --- DEPTH INPUT ROWS --- */
+/* Depth Inputs */
 .depth-input-row {
     display: flex;
     align-items: center;
@@ -378,6 +150,8 @@ html, body {
     border: 1px solid var(--border);
     border-radius: 6px;
 }
+
+/* Diagram Mode (compact) */
 .diagram-card {
     padding: 14px 16px;
 }
@@ -401,16 +175,7 @@ html, body {
     border: 1px solid var(--border);
 }
 
-/* --- DIAGRAM MODE SELECT --- */
-.toggle-group select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-/* --- GARMIN RADIUS OUTPUTS --- */
+/* Radius Outputs */
 .radius-card .output-row {
     padding: 16px 18px;
     background: #f2f4f7;
@@ -433,17 +198,12 @@ html, body {
     font-variant-numeric: tabular-nums;
 }
 
-/* --- INFO BUTTON CARD --- */
-.icon-button {
+/* Canvas */
+#coneCanvas {
+    flex: 1 1 auto;
     width: 100%;
-    padding: 12px;
-    font-size: 1rem;
+    background: #f9f9fb;
     border-radius: 10px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    cursor: pointer;
+    border: 1px solid var(--border);
+    display: block;
 }
-
-
-
