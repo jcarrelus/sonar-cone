@@ -362,6 +362,28 @@ html, body {
     border: 1px solid var(--border);
     border-radius: 6px;
 }
+.diagram-card {
+    padding: 14px 16px;
+}
+
+.diagram-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.diagram-row label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 12px;
+}
+
+.diagram-row select {
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
 
 /* --- DIAGRAM MODE SELECT --- */
 .toggle-group select {
