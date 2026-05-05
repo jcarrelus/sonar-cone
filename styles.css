@@ -176,27 +176,6 @@ html, body {
 }
 
 /* Radius Outputs */
-.radius-card .output-row {
-    padding: 16px 18px;
-    background: #f2f4f7;
-    border-radius: 12px;
-    margin-bottom: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.output-label {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.output-value {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
-}
 
 /* Compact Garmin Radius Block */
 .compact-radius {
