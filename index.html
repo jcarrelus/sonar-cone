@@ -19,10 +19,19 @@
 <body>
   <div id="appContainer">
 
-    <!-- Header -->
+    <!-- Header with Diagram Mode -->
     <div class="app-header">
       <h1>Sonar Cone</h1>
-      <button id="infoButton" class="icon-button">ℹ️</button>
+
+      <div class="header-controls">
+        <label for="diagramMode" class="header-label">Mode:</label>
+        <select id="diagramMode" class="header-select">
+          <option value="simple">Simple</option>
+          <option value="enhanced" selected>Enhanced</option>
+        </select>
+
+        <button id="infoButton" class="icon-button">ℹ️</button>
+      </div>
     </div>
 
     <div id="controls">
@@ -32,7 +41,6 @@
         <h3 class="section-title">Sonar Cone Angle</h3>
 
         <div class="preset-group">
-
           <label class="preset-option garmin-wide">
             <input type="radio" name="anglePreset" value="45">
             <div class="preset-title">Wide</div>
@@ -44,38 +52,23 @@
             <div class="preset-title">Narrow</div>
             <div class="preset-sub">200 kHz · 15°</div>
           </label>
-
         </div>
       </div>
 
-      <!-- Bottom Depth -->
+      <!-- Combined Depth Row -->
       <div class="card">
-        <h3 class="section-title">Bottom Depth</h3>
+        <h3 class="section-title">Depth Controls</h3>
+
         <div class="control-row">
           <label>Bottom</label>
           <input type="range" id="bottomDepth" min="1" max="300" value="30">
           <input type="number" id="bottomDepthNumber" min="1" max="300" value="30">
         </div>
-      </div>
 
-      <!-- Fish Depth -->
-      <div class="card">
-        <h3 class="section-title">Fish Depth</h3>
         <div class="control-row">
           <label>Fish</label>
           <input type="range" id="fishDepth" min="1" max="300" value="12">
           <input type="number" id="fishDepthNumber" min="1" max="300" value="12">
-        </div>
-      </div>
-
-      <!-- Diagram Mode -->
-      <div class="card diagram-card">
-        <div class="diagram-row">
-          <label for="diagramMode">Diagram Mode:</label>
-          <select id="diagramMode">
-            <option value="simple">Simple</option>
-            <option value="enhanced" selected>Enhanced</option>
-          </select>
         </div>
       </div>
 
@@ -111,4 +104,5 @@
 
   <script src="app.js?v=1000"></script>
 </body>
+
 </html>
