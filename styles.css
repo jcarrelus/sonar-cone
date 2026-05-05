@@ -257,70 +257,155 @@ html, body {
     overflow: hidden;
 }
 
-/* Controls container (card-style) */
+/* ============================================================
+   GARMIN STYLE UPGRADE — FULL INSTRUMENT PANEL LOOK
+   ============================================================ */
+
+/* Expand controls container */
 #controls {
-    flex: 0 0 auto;
+    padding: 16px 18px;
+    background: var(--bg);
+    overflow-y: auto;
+}
+
+/* --- CARD ENHANCEMENTS --- */
+.card {
+    padding: 20px 22px;
+    margin-bottom: 18px;
+    border-radius: var(--radius);
     background: var(--card-bg);
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
     box-shadow: var(--shadow);
 }
 
-/* Row layout */
-.row {
+.section-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+/* --- GARMIN ANGLE PRESETS --- */
+.angle-card .preset-group {
+    display: flex;
+    gap: 12px;
+}
+
+.preset-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    background: #f7f9fc;
+    transition: 0.15s ease;
+    position: relative;
+}
+
+.preset-option input {
+    display: none;
+}
+
+.preset-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.preset-sub {
+    font-size: 0.85rem;
+    color: var(--subtext);
+    margin-top: 2px;
+}
+
+/* --- SELECTED STATE --- */
+.preset-option input:checked ~ .preset-title,
+.preset-option input:checked ~ .preset-sub {
+    color: white;
+}
+
+/* Wide (77 kHz · 45°) */
+.garmin-wide {
+    border-color: #ff9500;
+}
+
+.garmin-wide input:checked ~ * {
+    background: #ff9500;
+    color: white;
+}
+
+/* Narrow (200 kHz · 15°) */
+.garmin-narrow {
+    border-color: #007aff;
+}
+
+.garmin-narrow input:checked ~ * {
+    background: #007aff;
+    color: white;
+}
+
+/* --- DEPTH INPUT ROWS --- */
+.depth-input-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
+    gap: 12px;
 }
 
-.row:last-child {
-    margin-bottom: 0;
-}
-
-.row label {
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-right: 10px;
-    white-space: nowrap;
-}
-
-/* Range + number inputs */
-.row input[type="range"] {
+.depth-input-row input[type="range"] {
     flex: 1;
-    margin: 0 10px;
 }
 
-.row input[type="number"] {
-    width: 70px;
+.depth-input-row input[type="number"] {
+    width: 80px;
     padding: 6px;
     font-size: 1rem;
     border: 1px solid var(--border);
     border-radius: 6px;
 }
 
-/* Radius emphasis */
-.radius-box {
-    flex: 1;
-    padding: 8px 12px;
-    background: #eef6ff;
-    border: 1px solid #bcd8ff;
-    border-radius: 10px;
-    font-weight: 600;
+/* --- DIAGRAM MODE SELECT --- */
+.toggle-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/* --- GARMIN RADIUS OUTPUTS --- */
+.radius-card .output-row {
+    padding: 16px 18px;
+    background: #f2f4f7;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.output-label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.output-value {
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--accent);
-    text-align: right;
-    font-size: 1.1rem;
     font-variant-numeric: tabular-nums;
 }
 
-/* Canvas fills remaining space */
-#coneCanvas {
-    flex: 1 1 auto;
+/* --- INFO BUTTON CARD --- */
+.icon-button {
     width: 100%;
-    background: #f9f9fb;
+    padding: 12px;
+    font-size: 1rem;
     border-radius: 10px;
-    border: 1px solid var(--border);
-    display: block;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
 }
+
 
 
