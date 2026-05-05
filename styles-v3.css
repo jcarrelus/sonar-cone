@@ -271,3 +271,34 @@ html, body {
 .radius-card {
     padding: 8px 10px !important;
 }
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;              /* was probably 12–20px */
+    padding: 4px 0;        /* reduce vertical padding */
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;              /* tighter spacing */
+    height: 32px;          /* forces compact rows */
+}
+
+.control-row label {
+    font-size: 14px;       /* smaller label text */
+    white-space: nowrap;
+}
+
+.control-row input[type="range"] {
+    height: 20px;          /* shrink slider height */
+}
+
+.control-row input[type="number"] {
+    width: 60px;           /* compact number box */
+    height: 26px;
+    font-size: 14px;
+    padding: 2px 4px;
+}
