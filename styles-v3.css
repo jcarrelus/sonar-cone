@@ -272,6 +272,10 @@ html, body {
     padding: 8px 10px !important;
 }
 
+#controls {
+    margin: 4px 0;     /* was probably 20–30px */
+}
+
 .control-panel {
     display: flex;
     flex-direction: column;
@@ -302,3 +306,4 @@ html, body {
     font-size: 14px;
     padding: 2px 4px;
 }
+
